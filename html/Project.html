@@ -1,0 +1,261 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Something</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-12-19"><meta name="DC.source" content="Project.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Something</h1><p>TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText jer</p><pre class="codeinput">hold <span class="string">on</span>
+<span class="comment">%Final Project</span>
+
+<span class="comment">%Load in-built image</span>
+<span class="comment">%X = reshape(1:100,10,10) .';        %Matrix of 100 numbers for testing</span>
+X = imread(<span class="string">'street1.jpg'</span>);
+X = rgb2gray(X);
+X = imnoise(X,<span class="string">'salt &amp; pepper'</span>,0.1);
+
+
+
+<span class="comment">% disp(X);</span>
+<span class="comment">%imshow(X);</span>
+
+X1 = X;
+
+total_rows = size(X, 1);
+total_columns = size(X, 2);
+
+L = 1;
+M = 2*L+1;
+T1 = 40;     <span class="comment">%Threshold value 1</span>
+T2 = 2;      <span class="comment">%Threshold value 2</span>
+<span class="comment">%FOR Loop - to traverse entire image matrix</span>
+
+<span class="keyword">for</span> i = L+1:total_rows-L
+    <span class="keyword">for</span> j = L+1:total_columns-L
+        Window = X(i-L:i+L, j-L:j+L);
+        <span class="comment">%disp('Window: ');</span>
+        <span class="comment">%disp(Window);</span>
+        Delta = abs(Window-Window(L+1,L+1));
+        <span class="comment">%disp('Delta: ');</span>
+        <span class="comment">%disp(Delta);</span>
+        Delta_Thresh = Delta &lt; T1;
+        <span class="comment">%disp('Delta Threshold: ');</span>
+        <span class="comment">%disp(Delta_Thresh);</span>
+        eta = sum(Delta_Thresh(:));
+        <span class="comment">%disp('eta: ');</span>
+        <span class="comment">%disp(eta);</span>
+
+        <span class="comment">%Step 6</span>
+        <span class="keyword">if</span>(eta &gt;= T2)
+            psi = 1; <span class="comment">%psi = 1 means that it is an uncorrupted pixel</span>
+        <span class="keyword">elseif</span> (eta &lt; T2)
+            <span class="comment">%disp("in");</span>
+            psi = 0;
+        <span class="keyword">end</span>
+
+        <span class="comment">%disp('psi: ');</span>
+        <span class="comment">%disp(psi);</span>
+
+         <span class="comment">%Step 7</span>
+         <span class="keyword">if</span>(psi == 0)
+               <span class="comment">%disp("in");</span>
+             X(i, j) = 0.*X(i, j);
+         <span class="keyword">else</span>
+             X(i,j) = 1.*X(i,j);
+         <span class="keyword">end</span>
+         <span class="comment">%disp('current pixel: ');</span>
+         <span class="comment">%disp(X(i,j));</span>
+           val = X(i,j);
+         <span class="comment">%Step 8</span>
+
+        <span class="keyword">if</span> (X(i,j) == 0 || X(i,j) == 255) <span class="comment">% the pixel is corrupted, replace with the median value - TODO: change this to equals</span>
+
+          Current_Window_Old = Window;
+          <span class="comment">%Current_Window = mtimes((Delta_Thresh), (Current_Window));</span>
+          <span class="comment">%disp('New Delta, isolating for the 1s: ');</span>
+          <span class="comment">%disp(Delta);</span>
+
+           <span class="comment">%remove all the zeros</span>
+           rem_zeros = nonzeros(Current_Window_Old');
+           <span class="comment">%disp("Remove zeros ");</span>
+           <span class="comment">%disp(rem_zeros);</span>
+
+           <span class="comment">%calculate the median and replace the center pixel with it</span>
+           med = median(rem_zeros, <span class="string">"all"</span>);
+           X(i,j) = med;
+           <span class="comment">%disp('Median : ');</span>
+           <span class="comment">%disp(X(i,j));</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+<span class="comment">%imshow(X);</span>
+
+X2 = X;
+
+subplot(1,2,1), imshow(X1)
+subplot(1,2,2), imshow(X2)
+</pre><img vspace="5" hspace="5" src="Project_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Something
+% TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+% TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+% jer
+
+
+hold on 
+%Final Project
+
+%Load in-built image
+%X = reshape(1:100,10,10) .';        %Matrix of 100 numbers for testing                        
+X = imread('street1.jpg');
+X = rgb2gray(X);
+X = imnoise(X,'salt & pepper',0.1);
+
+
+
+% disp(X);
+%imshow(X);
+
+X1 = X;
+
+total_rows = size(X, 1);
+total_columns = size(X, 2);
+
+L = 1;
+M = 2*L+1;
+T1 = 40;     %Threshold value 1
+T2 = 2;      %Threshold value 2
+%FOR Loop - to traverse entire image matrix
+
+for i = L+1:total_rows-L
+    for j = L+1:total_columns-L
+        Window = X(i-L:i+L, j-L:j+L);
+        %disp('Window: ');
+        %disp(Window);
+        Delta = abs(Window-Window(L+1,L+1));
+        %disp('Delta: ');
+        %disp(Delta);
+        Delta_Thresh = Delta < T1;
+        %disp('Delta Threshold: ');
+        %disp(Delta_Thresh);
+        eta = sum(Delta_Thresh(:));
+        %disp('eta: ');
+        %disp(eta);
+
+        %Step 6 
+        if(eta >= T2)
+            psi = 1; %psi = 1 means that it is an uncorrupted pixel
+        elseif (eta < T2)
+            %disp("in");
+            psi = 0;
+        end
+    
+        %disp('psi: ');
+        %disp(psi); 
+
+         %Step 7
+         if(psi == 0)
+               %disp("in");
+             X(i, j) = 0.*X(i, j);
+         else
+             X(i,j) = 1.*X(i,j);
+         end
+         %disp('current pixel: ');
+         %disp(X(i,j));
+           val = X(i,j);
+         %Step 8
+         
+        if (X(i,j) == 0 || X(i,j) == 255) % the pixel is corrupted, replace with the median value - TODO: change this to equals 
+
+          Current_Window_Old = Window; 
+          %Current_Window = mtimes((Delta_Thresh), (Current_Window)); 
+          %disp('New Delta, isolating for the 1s: ');
+          %disp(Delta);
+
+           %remove all the zeros 
+           rem_zeros = nonzeros(Current_Window_Old');
+           %disp("Remove zeros ");
+           %disp(rem_zeros);
+
+           %calculate the median and replace the center pixel with it
+           med = median(rem_zeros, "all");
+           X(i,j) = med;
+           %disp('Median : ');
+           %disp(X(i,j));
+        end
+    end 
+end
+
+
+%imshow(X);
+
+X2 = X;
+
+subplot(1,2,1), imshow(X1)
+subplot(1,2,2), imshow(X2)
+##### SOURCE END #####
+--></body></html>
